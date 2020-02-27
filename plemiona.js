@@ -1,5 +1,4 @@
-(function() {
-    "use strict";
+"use strict";
 
 function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
 
@@ -114,19 +113,21 @@ function () {
           value: 0
         }
       };
-      var images = trs[0].querySelectorAll('img');
-      images.forEach(function (image) {
-        if (image.getAttribute('src').includes('graphic/unit/unit')) {
-          var unit = image.src.split('graphic/unit/unit_')[1].replace('.png', '');
+       if (typeof(trs[0]) != 'undefined') {
+        var images = trs[0].querySelectorAll('img');
+        images.forEach(function (image) {
+            if (image.getAttribute('src').includes('graphic/unit/unit')) {
+            var unit = image.src.split('graphic/unit/unit_')[1].replace('.png', '');
 
-          if (UNITS.includes(unit.toLowerCase())) {
-            obj[unit] = {
-              index: image.parentNode.cellIndex,
-              value: 0
-            };
-          }
-        }
-      });
+            if (UNITS.includes(unit.toLowerCase())) {
+                obj[unit] = {
+                index: image.parentNode.cellIndex,
+                value: 0
+                };
+            }
+            }
+        })
+      }
 
       for (var i = 1; i < trs.length; i++) {
         var tds = trs[i].querySelectorAll('td');
@@ -288,5 +289,4 @@ function () {
 
 (function () {
   new CountOffVillages();
-})();
 })();
